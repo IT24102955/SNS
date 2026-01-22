@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact SNS Visa Consultants - Book your free consultation for student and visitor visas.">
+  <title>Contact Us | SNS Visa Consultants</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* --- CSS VARIABLES --- */
+    :root {
+      /* Light Theme */
+      --primary-color: #102C57;
+      --accent-color: #FFC107;
+      --accent-hover: #FFB300;
+
+      --bg-body: #FFFFFF;
+      --bg-section: #F1F5F9;
+      --bg-card: #FFFFFF;
+
+      --text-main: #102C57;
+      --text-secondary: #64748B;
+      --text-on-accent: #102C57;
+
+      --border-color: #e2e8f0;
+      --shadow-color: rgba(16, 44, 87, 0.08);
+
+      /* Header Colors */
+      --header-bg-scrolled: rgba(255, 255, 255, 0.95);
+      --header-border-scrolled: rgba(255, 255, 255, 0.3);
+
+      --transition: all 0.3s ease;
+    }
+
+    /* Dark Theme */
+    [data-theme="dark"] {
+      --primary-color: #F8FAFC;
+      --accent-color: #FFC107;
+
+      --bg-body: #051024;
+      --bg-section: #0B1A36;
+      --bg-card: #0B1A36;
+
+      --text-main: #F1F5F9;
+      --text-secondary: #94A3B8;
+      --text-on-accent: #051024;
+
+      --border-color: #1e3a8a;
+      --shadow-color: rgba(0,0,0,0.4);
+
+      --header-bg-scrolled: rgba(5, 16, 36, 0.90);
+      --header-border-scrolled: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    [data-theme="dark"] h1, [data-theme="dark"] h2,
+    [data-theme="dark"] h3, [data-theme="dark"] h4, [data-theme="dark"] h5 { color: #F8FAFC; }
+
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+    ul { list-style: none; }
+    html { scroll-behavior: smooth; }
+
+    /* --- UTILITY CLASSES --- */
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 30px; height: 100%; }
+    .section-padding { padding: 80px 0; }
+    .text-center { text-align: center; }
+    .section-subtitle { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 50px; }
+
+    /* --- HEADER & NAV --- */
+    header {
+      position: fixed; top: 0; width: 100%; height: 70px; z-index: 1000;
+      background: transparent; border-bottom: 1px solid transparent; box-shadow: none;
+      transition: all 0.4s ease;
+    }
+
+    header.scrolled {
+      background: var(--header-bg-scrolled);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--header-border-scrolled);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+    }
+
+    nav { display: flex; justify-content: space-between; align-items: center; height: 100%; padding: 0; }
+
+    .logo-container {
+      display: flex; align-items: center; height: 100%;
+      opacity: 0; visibility: hidden; transform: translateY(-20px);
+      transition: all 0.4s ease;
+    }
+    header.scrolled .logo-container { opacity: 1; visibility: visible; transform: translateY(0); }
+
+    .logo-img { height: 50px; width: auto; object-fit: contain; display: block; }
+
+    .nav-menu { display: flex; align-items: center; gap: 20px; height: 100%; }
+
+    .nav-menu a.nav-link {
+      font-weight: 600; font-size: 0.85rem; color: white;
+      position: relative; white-space: nowrap; display: flex; align-items: center; height: 100%;
+      transition: color 0.4s ease;
+    }
+
+    header.scrolled .nav-menu a.nav-link { color: #102C57 !important; }
+    [data-theme="dark"] header.scrolled .nav-menu a.nav-link { color: #F8FAFC !important; }
+
+    .nav-menu a.nav-link:hover { color: var(--accent-color) !important; }
+    .nav-menu a.nav-link::after {
+      content: ''; position: absolute; width: 0; height: 2px;
+      bottom: 22px; left: 0; background-color: var(--accent-color); transition: width 0.3s;
+    }
+    .nav-menu a.nav-link:hover::after { width: 100%; }
+
+    .btn-contact {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 0 24px; height: 38px; border: 2px solid white; border-radius: 4px;
+      font-weight: 700; font-size: 0.85rem; color: white; background: transparent;
+      transition: all 0.4s ease; margin-left: 10px;
+    }
+
+    header.scrolled .btn-contact { border-color: #102C57; color: #102C57; }
+    [data-theme="dark"] header.scrolled .btn-contact { border-color: #fff; color: #fff; }
+
+    .btn-contact:hover {
+      background-color: var(--accent-color); border-color: var(--accent-color);
+      color: #102C57 !important; box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+    }
+
+    .theme-switch, .mobile-menu-btn { color: white; transition: all 0.4s ease; }
+    header.scrolled .theme-switch, header.scrolled .mobile-menu-btn { color: #102C57 !important; }
+    [data-theme="dark"] header.scrolled .theme-switch, [data-theme="dark"] header.scrolled .mobile-menu-btn { color: #fff !important; }
+
+    .theme-switch {
+      width: 35px; height: 35px; border: none; background: transparent;
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
+      margin-left: 5px; font-size: 1rem;
+    }
+    .theme-switch:hover { color: var(--accent-color) !important; transform: rotate(15deg); }
+    .mobile-menu-btn { display: none; font-size: 1.5rem; cursor: pointer; }
+
+    /* --- PAGE HERO --- */
+    .page-hero {
+      height: 60vh;
+      min-height: 400px;
+      background: linear-gradient(rgba(16, 44, 87, 0.9), rgba(16, 44, 87, 0.8)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover; background-position: center;
+      display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+      padding-top: 100px; box-sizing: border-box;
+    }
+    .page-hero h1 { color: white !important; font-size: 3rem; margin-bottom: 15px; }
+    .page-hero p { color: #cbd5e1; font-size: 1.2rem; max-width: 700px; margin: 0 auto; }
+
+    /* --- CONTACT CONTAINER --- */
+    .contact-section { padding: 80px 0; background-color: var(--bg-section); }
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 50px;
+      background: var(--bg-body);
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    /* LEFT COLUMN: INFO */
+    .contact-info-panel {
+      background-color: #102C57;
+      color: white;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      /* Removed justify-content: space-between to allow stacking */
+    }
+
+    .info-header h3 { color: white !important; font-size: 2rem; margin-bottom: 10px; }
+    .info-header p { color: #cbd5e1; margin-bottom: 30px; }
+
+    .info-list { list-style: none; padding: 0; margin-bottom: 30px; }
+    .info-list li { margin-bottom: 25px; display: flex; align-items: flex-start; gap: 15px; }
+    .info-list i { color: var(--accent-color); font-size: 1.2rem; margin-top: 5px; }
+    .info-list span { font-size: 1rem; line-height: 1.6; }
+    .info-list a { color: white; text-decoration: none; transition: 0.3s; }
+    .info-list a:hover { color: var(--accent-color); }
+
+    /* Social Links moved up */
+    .social-links h4 { color: white !important; margin-bottom: 15px; font-size: 1rem; }
+    .social-icons-row { display: flex; gap: 15px; }
+    .social-btn {
+      width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; color: white; transition: 0.3s;
+    }
+    .social-btn:hover { background: var(--accent-color); color: #102C57; transform: translateY(-3px); }
+
+    /* RIGHT COLUMN: FORM */
+    .form-panel { padding: 50px; }
+    .form-header { margin-bottom: 30px; }
+    .form-header h2 { font-size: 1.8rem; margin-bottom: 10px; }
+    .form-header p { color: var(--text-secondary); font-size: 0.95rem; }
+
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-main); font-size: 0.9rem; }
+    .required { color: #e74c3c; margin-left: 3px; }
+
+    .form-control {
+      width: 100%; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: 6px;
+      background: var(--bg-section); color: var(--text-main); font-family: inherit; font-size: 0.95rem;
+      transition: all 0.3s;
+    }
+    .form-control:focus { outline: none; border-color: var(--primary-color); background: var(--bg-body); }
+
+    .checkbox-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+    .checkbox-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--text-secondary); }
+    .checkbox-item input { accent-color: var(--primary-color); width: 16px; height: 16px; }
+
+    .language-note {
+      background: rgba(16, 44, 87, 0.05); padding: 15px; border-radius: 6px; margin-bottom: 20px;
+      font-size: 0.85rem; color: var(--text-secondary); border-left: 3px solid var(--accent-color);
+    }
+    .language-note strong { color: var(--primary-color); display: block; margin-bottom: 5px; }
+
+    .btn-submit {
+      background-color: var(--accent-color); color: #102C57; padding: 15px 40px; border: none;
+      border-radius: 6px; font-weight: 800; font-size: 1rem; cursor: pointer; transition: 0.3s;
+      width: 100%; text-transform: uppercase; margin-top: 10px;
+    }
+    .btn-submit:hover { background-color: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4); }
+
+    /* Footer */
+    footer { background-color: #051024; color: #94a3b8; padding: 60px 0 20px; font-size: 0.9rem; border-top: 1px solid #1e3a8a; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-col h4 { color: white !important; margin-bottom: 20px; font-size: 1.1rem; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { transition: color 0.3s; color: #94a3b8; text-decoration: none; }
+    .footer-col ul li a:hover { color: var(--accent-color); }
+    .contact-info li { display: flex; align-items: start; gap: 10px; margin-bottom: 12px; }
+    .contact-info i { color: var(--accent-color); margin-top: 4px; }
+    .social-icons { display: flex; gap: 15px; margin-top: 20px; }
+    .social-icons a {
+      width: 35px; height: 35px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; transition: var(--transition); color: white; text-decoration: none;
+    }
+    .social-icons a:hover { background: var(--accent-color); color: #102C57; }
+    .copyright { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 0.8rem; }
+
+    /* --- WHATSAPP FLOATING BUTTON --- */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      z-index: 9999;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .whatsapp-btn:hover {
+      background-color: #128c7e;
+      transform: scale(1.1);
+      color: white;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 1200px) {
+      .nav-menu {
+        position: fixed; top: 70px; left: 0; width: 100%;
+        background-color: var(--bg-body); height: calc(100vh - 70px);
+        flex-direction: column; align-items: center; padding: 40px 0; gap: 25px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-bottom: 1px solid var(--border-color);
+        transform: translateY(-150%); transition: transform 0.4s ease, opacity 0.4s ease;
+        opacity: 0; pointer-events: none; overflow-y: auto;
+      }
+      .nav-menu a.nav-link, .theme-switch, .mobile-menu-btn { color: var(--text-main); }
+      .btn-contact { border-color: var(--primary-color); color: var(--primary-color); margin-left: 0; width: 80%; text-align: center; }
+      [data-theme="dark"] .btn-contact { border-color: #fff; color: #fff; }
+      .nav-menu.active { transform: translateY(0); opacity: 1; pointer-events: all; }
+      .mobile-menu-btn { display: block; }
+      .page-hero h1 { font-size: 2rem; }
+    }
+
+    @media (max-width: 900px) {
+      .contact-wrapper { grid-template-columns: 1fr; }
+      .checkbox-group { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .whatsapp-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 28px;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a href="index.html" class="logo-container">
+        <img src="logo.png" alt="SNS Visa Consultants Logo" class="logo-img">
+      </a>
+      <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+      <div class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="destinations.html" class="nav-link">Destinations</a>
+        <a href="value.html" class="nav-link">Value</a>
+        <a href="index.html#why-choose" class="nav-link">Success Stories</a>
+        <a href="updates.html" class="nav-link">Visa Updates</a>
+        <a href="contact.html" class="btn-contact">Contact Us</a>
+        <button class="theme-switch" id="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div>
+      <h1>Get in Touch</h1>
+      <p>Book Your Free Consultation • Connect with our team</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-wrapper">
+
+      <div class="contact-info-panel">
+        <div class="info-header">
+          <h3>Connect Directly</h3>
+          <p>We are based in Kandy, Sri Lanka, offering virtual consulting services globally.</p>
+
+          <ul class="info-list">
+            <li><i class="fas fa-phone-alt"></i> <span>+94 81 450 3235</span></li>
+            <li><i class="fas fa-mobile-alt"></i> <span>+94 76 888 6509</span></li>
+            <li><i class="fas fa-mobile-alt"></i> <span>+94 77 775 2878</span></li>
+            <li><i class="fas fa-envelope"></i> <a href="mailto:snsglobalholdings@gmail.com">snsglobalholdings@gmail.com</a></li>
+          </ul>
+
+          <div class="social-links">
+            <h4>Follow Us</h4>
+            <div class="social-icons-row">
+              <a href="https://www.facebook.com/SNSEducationConsultants/" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/sns_visa_consultants/" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/company/snsvisaconsultants" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-panel">
+        <div class="form-header">
+          <h2>Free Consultation Request</h2>
+          <p>Complete this form so we can connect you with the most qualified specialist. Please use clear, block letter text.</p>
+        </div>
+
+        <form id="contactForm" onsubmit="handleFormSubmit(event)">
+          <div class="form-group">
+            <label>Full Name <span class="required">*</span></label>
+            <input type="text" class="form-control" placeholder="Enter your full name" required>
+          </div>
+
+          <div class="form-group">
+            <label>Email Address <span class="required">*</span></label>
+            <input type="email" class="form-control" placeholder="Enter your email" required>
+          </div>
+
+          <div class="form-group">
+            <label>Phone Number <span class="required">*</span></label>
+            <input type="tel" class="form-control" placeholder="Enter your mobile number" required>
+          </div>
+
+          <div class="form-group">
+            <label>Client Type <span class="required">*</span></label>
+            <select class="form-control" required>
+              <option value="" disabled selected>Select Client Type</option>
+              <option>Individual / Family (Direct Client)</option>
+              <option>Company / Corporate Partner (B2B)</option>
+              <option>Other Inquiry</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Interested Destination <span class="required">*</span></label>
+            <select class="form-control" required>
+              <option value="" disabled selected>Select Destination</option>
+              <option>Australia</option>
+              <option>Canada</option>
+              <option>United Kingdom</option>
+              <option>New Zealand</option>
+              <option>USA</option>
+              <option>Schengen Area (Europe)</option>
+              <option>UAE</option>
+              <option>Singapore</option>
+              <option>Not Sure Yet</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Primary Need (Select all that apply) <span class="required">*</span></label>
+            <div class="checkbox-group">
+              <label class="checkbox-item"><input type="checkbox"> Student Visa Assistance</label>
+              <label class="checkbox-item"><input type="checkbox"> Visitor / Tourist Visa</label>
+              <label class="checkbox-item"><input type="checkbox"> Document Review</label>
+              <label class="checkbox-item"><input type="checkbox"> Visa Interview Prep</label>
+              <label class="checkbox-item"><input type="checkbox"> Cover Letter Drafting</label>
+              <label class="checkbox-item"><input type="checkbox"> Biometric Appointments</label>
+              <label class="checkbox-item"><input type="checkbox"> Travel Itinerary</label>
+              <label class="checkbox-item"><input type="checkbox"> Travel Insurance</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Describe your situation (Optional)</label>
+            <div class="language-note">
+              <strong>Tip:</strong> Briefly summarize your background or reason for travel.<br>
+              <em>(e.g., "I want to start my Master's in Canada" or "Need visitor visa for parents")</em>
+            </div>
+            <textarea class="form-control" rows="5" placeholder="Enter details here..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">Submit Request</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>SNS Visa Consultants</h4>
+        <p style="margin-bottom: 20px;">A subsidiary of SNS Global Holdings (PVT) Ltd.</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/SNSEducationConsultants/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/sns_visa_consultants/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/snsvisaconsultants" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Student Visas</a></li>
+          <li><a href="services.html">Visitor Visas</a></li>
+          <li><a href="services.html">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="about.html">Privacy Policy</a></li>
+          <li><a href="about.html">Terms & Conditions</a></li>
+          <li><a href="about.html">Legal Disclaimer</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <ul class="contact-info">
+          <li><i class="fas fa-envelope"></i> snsglobalholdings@gmail.com</li>
+          <li><i class="fas fa-phone"></i> +94 81 450 3235</li>
+          <li><i class="fas fa-mobile-alt"></i> +94 76 888 6509</li>
+          <li><i class="fas fa-mobile-alt"></i> +94 77 775 2878</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2025 SNS Global Holdings (PVT) Ltd. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.link/mt8cb4" class="whatsapp-btn" target="_blank" aria-label="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) { header.classList.add('scrolled'); }
+    else { header.classList.remove('scrolled'); }
+  });
+
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = themeToggle.querySelector('i');
+  const currentTheme = localStorage.getItem('theme');
+  const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    if (theme === 'dark') { themeIcon.classList.remove('fa-moon'); themeIcon.classList.add('fa-sun'); }
+    else { themeIcon.classList.remove('fa-sun'); themeIcon.classList.add('fa-moon'); }
+  }
+  if (currentTheme) { setTheme(currentTheme); } else if (prefersDarkScheme.matches) { setTheme('dark'); }
+  themeToggle.addEventListener('click', () => { let targetTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'; setTheme(targetTheme); });
+
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const navMenu = document.querySelector('.nav-menu');
+  const icon = menuBtn.querySelector('i');
+  menuBtn.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    if(navMenu.classList.contains('active')){
+      icon.classList.remove('fa-bars'); icon.classList.add('fa-times');
+      document.body.style.overflow = 'hidden';
+    } else {
+      icon.classList.remove('fa-times'); icon.classList.add('fa-bars');
+      document.body.style.overflow = 'auto';
+    }
+  });
+  document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('active'); icon.classList.remove('fa-times'); icon.classList.add('fa-bars');
+      document.body.style.overflow = 'auto';
+    });
+  });
+
+  // Form Submission Simulation
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    alert("Thank you for your request! A specialist from SNS Visa Consultants will contact you shortly.");
+    document.getElementById('contactForm').reset();
+  }
+</script>
+</body>
+</html>

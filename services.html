@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SNS Visa Consultants - Expert Student and Visitor Visa Consulting Services.">
+  <title>Our Services | SNS Visa Consultants</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* --- CSS VARIABLES --- */
+    :root {
+      /* Light Theme */
+      --primary-color: #102C57;
+      --accent-color: #FFC107;
+      --accent-hover: #FFB300;
+
+      --bg-body: #FFFFFF;
+      --bg-section: #F1F5F9;
+      --bg-card: #FFFFFF;
+
+      --text-main: #102C57;
+      --text-secondary: #64748B;
+      --text-on-accent: #102C57;
+
+      --border-color: #e2e8f0;
+      --shadow-color: rgba(16, 44, 87, 0.08);
+
+      /* Header Colors */
+      --header-bg-scrolled: rgba(255, 255, 255, 0.95);
+      --header-border-scrolled: rgba(255, 255, 255, 0.3);
+
+      --transition: all 0.3s ease;
+    }
+
+    /* Dark Theme */
+    [data-theme="dark"] {
+      --primary-color: #F8FAFC;
+      --accent-color: #FFC107;
+
+      --bg-body: #051024;
+      --bg-section: #0B1A36;
+      --bg-card: #0B1A36;
+
+      --text-main: #F1F5F9;
+      --text-secondary: #94A3B8;
+      --text-on-accent: #051024;
+
+      --border-color: #1e3a8a;
+      --shadow-color: rgba(0,0,0,0.4);
+
+      --header-bg-scrolled: rgba(5, 16, 36, 0.90);
+      --header-border-scrolled: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    [data-theme="dark"] h1, [data-theme="dark"] h2,
+    [data-theme="dark"] h3, [data-theme="dark"] h4, [data-theme="dark"] h5 { color: #F8FAFC; }
+
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+    ul { list-style: none; }
+    html { scroll-behavior: smooth; }
+
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 30px; height: 100%; }
+    .section-padding { padding: 80px 0; }
+    .text-center { text-align: center; }
+    .section-subtitle { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 50px; }
+
+    /* --- HEADER & NAV --- */
+    header {
+      position: fixed; top: 0; width: 100%; height: 70px; z-index: 1000;
+      background: transparent; border-bottom: 1px solid transparent; box-shadow: none;
+      transition: all 0.4s ease;
+    }
+
+    header.scrolled {
+      background: var(--header-bg-scrolled);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--header-border-scrolled);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+    }
+
+    nav { display: flex; justify-content: space-between; align-items: center; height: 100%; padding: 0; }
+
+    /* Logo Animation */
+    .logo-container {
+      display: flex; align-items: center; height: 100%;
+      opacity: 0; visibility: hidden; transform: translateY(-20px);
+      transition: all 0.4s ease;
+    }
+    header.scrolled .logo-container { opacity: 1; visibility: visible; transform: translateY(0); }
+
+    .logo-img { height: 50px; width: auto; object-fit: contain; display: block; }
+
+    .nav-menu { display: flex; align-items: center; gap: 20px; height: 100%; }
+
+    .nav-menu a.nav-link {
+      font-weight: 600; font-size: 0.85rem; color: white;
+      position: relative; white-space: nowrap; display: flex; align-items: center; height: 100%;
+      transition: color 0.4s ease;
+    }
+
+    header.scrolled .nav-menu a.nav-link { color: #102C57 !important; }
+    [data-theme="dark"] header.scrolled .nav-menu a.nav-link { color: #F8FAFC !important; }
+
+    .nav-menu a.nav-link:hover { color: var(--accent-color) !important; }
+    .nav-menu a.nav-link::after {
+      content: ''; position: absolute; width: 0; height: 2px;
+      bottom: 22px; left: 0; background-color: var(--accent-color); transition: width 0.3s;
+    }
+    .nav-menu a.nav-link:hover::after { width: 100%; }
+
+    .btn-contact {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 0 24px; height: 38px; border: 2px solid white; border-radius: 4px;
+      font-weight: 700; font-size: 0.85rem; color: white; background: transparent;
+      transition: all 0.4s ease; margin-left: 10px;
+    }
+
+    header.scrolled .btn-contact { border-color: #102C57; color: #102C57; }
+    [data-theme="dark"] header.scrolled .btn-contact { border-color: #fff; color: #fff; }
+
+    .btn-contact:hover {
+      background-color: var(--accent-color); border-color: var(--accent-color);
+      color: #102C57 !important; box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+    }
+
+    .theme-switch, .mobile-menu-btn { color: white; transition: all 0.4s ease; }
+    header.scrolled .theme-switch, header.scrolled .mobile-menu-btn { color: #102C57 !important; }
+    [data-theme="dark"] header.scrolled .theme-switch, [data-theme="dark"] header.scrolled .mobile-menu-btn { color: #fff !important; }
+
+    .theme-switch {
+      width: 35px; height: 35px; border: none; background: transparent;
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
+      margin-left: 5px; font-size: 1rem;
+    }
+    .theme-switch:hover { color: var(--accent-color) !important; transform: rotate(15deg); }
+    .mobile-menu-btn { display: none; font-size: 1.5rem; cursor: pointer; }
+
+    /* --- PAGE HERO --- */
+    .page-hero {
+      height: 70vh;
+      min-height: 500px;
+      background: linear-gradient(rgba(16, 44, 87, 0.85), rgba(16, 44, 87, 0.7)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover; background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding-top: 100px;
+      box-sizing: border-box;
+    }
+    .page-hero h1 { color: white !important; font-size: 3rem; margin-bottom: 15px; line-height: 1.2; }
+    .page-hero p { color: #cbd5e1; font-size: 1.2rem; max-width: 700px; margin: 0 auto; }
+
+    /* --- CORE SERVICES --- */
+    .core-services { background-color: var(--bg-body); }
+    .core-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .core-card {
+      background: var(--bg-section); padding: 40px; border-radius: 12px; border: 1px solid var(--border-color);
+      transition: transform 0.3s ease; text-align: left;
+    }
+    .core-card:hover { transform: translateY(-5px); border-color: var(--accent-color); }
+    .core-card i { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 20px; }
+    .core-card h3 { font-size: 1.8rem; margin-bottom: 15px; }
+    .core-card p { color: var(--text-secondary); margin-bottom: 0; }
+
+    /* --- ADDITIONAL SERVICES --- */
+    .additional-services { background-color: var(--bg-section); }
+    .add-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .add-card {
+      background: var(--bg-body); padding: 30px; border-radius: 8px; border-top: 4px solid var(--primary-color);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05); height: 100%; border: 1px solid var(--border-color);
+    }
+    [data-theme="dark"] .add-card { border-top-color: var(--accent-color); }
+    .add-card h4 { font-size: 1.3rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    .add-card ul { list-style: none; padding: 0; }
+    .add-card li { margin-bottom: 12px; font-size: 0.95rem; color: var(--text-secondary); display: flex; align-items: start; gap: 10px; }
+    .add-card li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--accent-color); }
+
+    /* --- COUNTRIES SECTION --- */
+    .countries-section {
+      background-color: #102C57; /* Always Navy Blue */
+      color: white;
+      text-align: center;
+    }
+
+    .country-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* 4 Columns */
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .country-card {
+      display: flex;
+      flex-direction: column;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: white; /* White Card background */
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      height: 220px; /* Fixed Height */
+    }
+
+    /* Dark mode card adjustment */
+    [data-theme="dark"] .country-card { background-color: var(--bg-section); }
+
+    .country-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    }
+
+    .country-card img {
+      width: 100%;
+      height: 160px; /* Fixed Image Height */
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+
+    .country-card:hover img { transform: scale(1.05); }
+
+    .country-card h4 {
+      color: #102C57; /* Navy Text */
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 60px; /* Remaining height for text */
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    [data-theme="dark"] .country-card h4 { color: white; }
+
+    /* --- FAQ ACCORDION --- */
+    .faq-section { background-color: var(--bg-body); }
+    .faq-container { max-width: 900px; margin: 0 auto; }
+    details {
+      background: var(--bg-section); border-radius: 8px; margin-bottom: 15px; overflow: hidden;
+      border: 1px solid var(--border-color); transition: all 0.3s;
+    }
+    details[open] { border-color: var(--accent-color); }
+    summary {
+      padding: 20px; font-weight: 600; cursor: pointer; position: relative; list-style: none;
+      color: var(--text-main); display: flex; justify-content: space-between; align-items: center;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: '+'; font-size: 1.5rem; color: var(--accent-color); font-weight: 400; }
+    details[open] summary::after { content: '-'; }
+
+    .faq-answer { padding: 0 20px 25px 20px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; border-top: 1px solid rgba(0,0,0,0.05); }
+    .faq-answer strong { color: var(--text-main); }
+
+    /* --- CTA (UPDATED TO BLUE) --- */
+    .cta-section {
+      background-color: #102C57; /* Navy Blue */
+      text-align: center;
+      padding: 80px 0;
+      color: white;
+    }
+
+    /* Ensure it remains blue in Dark Mode too for consistency */
+    [data-theme="dark"] .cta-section { background-color: #102C57; }
+
+    .cta-section h2 { color: white !important; margin-bottom: 15px; font-size: 2rem; }
+    .cta-section p { color: #cbd5e1; margin-bottom: 30px; font-size: 1.1rem; }
+
+    .btn-cta {
+      display: inline-block;
+      background-color: var(--accent-color); /* Yellow Button */
+      color: #102C57; /* Navy Text on Button */
+      padding: 14px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+    }
+
+    .btn-cta:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 193, 7, 0.6);
+    }
+
+    /* --- FOOTER --- */
+    footer { background-color: #051024; color: #94a3b8; padding: 60px 0 20px; font-size: 0.9rem; border-top: 1px solid #1e3a8a; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-col h4 { color: white !important; margin-bottom: 20px; font-size: 1.1rem; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { transition: color 0.3s; color: #94a3b8; text-decoration: none; }
+    .footer-col ul li a:hover { color: var(--accent-color); }
+    .contact-info li { display: flex; align-items: start; gap: 10px; margin-bottom: 12px; }
+    .contact-info i { color: var(--accent-color); margin-top: 4px; }
+    .social-icons { display: flex; gap: 15px; margin-top: 20px; }
+    .social-icons a {
+      width: 35px; height: 35px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; transition: var(--transition); color: white; text-decoration: none;
+    }
+    .social-icons a:hover { background: var(--accent-color); color: #102C57; }
+    .copyright { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 0.8rem; }
+
+    /* --- WHATSAPP FLOATING BUTTON --- */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      z-index: 9999;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .whatsapp-btn:hover {
+      background-color: #128c7e;
+      transform: scale(1.1);
+      color: white;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 900px) {
+      .core-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 1200px) {
+      .nav-menu {
+        position: fixed; top: 70px; left: 0; width: 100%;
+        background-color: var(--bg-body); height: calc(100vh - 70px);
+        flex-direction: column; align-items: center; padding: 40px 0; gap: 25px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-bottom: 1px solid var(--border-color);
+        transform: translateY(-150%); transition: transform 0.4s ease, opacity 0.4s ease;
+        opacity: 0; pointer-events: none; overflow-y: auto;
+      }
+      .nav-menu a.nav-link, .theme-switch, .mobile-menu-btn { color: var(--text-main); }
+      .btn-contact { border-color: var(--primary-color); color: var(--primary-color); margin-left: 0; width: 80%; text-align: center; }
+      [data-theme="dark"] .btn-contact { border-color: #fff; color: #fff; }
+      .nav-menu.active { transform: translateY(0); opacity: 1; pointer-events: all; }
+      .mobile-menu-btn { display: block; }
+      .page-hero h1 { font-size: 2rem; }
+
+      /* Responsive Grid for Countries */
+      .country-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .whatsapp-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 28px;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .country-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a href="index.html" class="logo-container">
+        <img src="logo.png" alt="SNS Visa Consultants Logo" class="logo-img">
+      </a>
+      <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+      <div class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="destinations.html" class="nav-link">Destinations</a>
+        <a href="value.html" class="nav-link">Value</a>
+        <a href="index.html#why-choose" class="nav-link">Success Stories</a>
+        <a href="updates.html" class="nav-link">Visa Updates</a>
+        <a href="contact.html" class="btn-contact">Contact Us</a>
+        <button class="theme-switch" id="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div>
+      <h1>Our Specialized Services</h1>
+      <p>Comprehensive Visa & Travel Solutions for Your Global Journey</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-padding core-services">
+  <div class="container">
+    <div class="text-center" style="margin-bottom: 50px;">
+      <h2>Specialized Visa Consulting</h2>
+      <p class="section-subtitle">Expert guidance for your most important journeys</p>
+    </div>
+
+    <div class="core-grid">
+      <div class="core-card">
+        <i class="fas fa-graduation-cap"></i>
+        <h3>Student Visas</h3>
+        <p>Comprehensive assistance with university applications, documentation, and visa processing. We partner with universities and student portals to ensure a seamless transition for students pursuing international education, covering every step of the study abroad journey.</p>
+      </div>
+      <div class="core-card">
+        <i class="fas fa-plane-departure"></i>
+        <h3>Visitor & Tourist Visas</h3>
+        <p>Helping individuals and groups secure visit visas for any country. We cover all categories, from exploring purposes with trip schedules to complex long-term Family Visit Visas, including full support for sponsored family stream applications.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-padding additional-services">
+  <div class="container">
+    <div class="text-center" style="margin-bottom: 50px;">
+      <h2>Additional Support Services</h2>
+      <p class="section-subtitle">Customizable solutions to meet every client need</p>
+    </div>
+
+    <div class="add-grid">
+      <div class="add-card">
+        <h4><i class="fas fa-file-alt"></i> Document Management</h4>
+        <ul>
+          <li>Visa Consultation & Strategy</li>
+          <li>Document Preparation & Review</li>
+          <li>Digital File Creation & Optimization</li>
+          <li>Application Form Filling & Submission</li>
+          <li>Cover Letter Drafting</li>
+          <li>Fee Payment Processing</li>
+          <li>Appointment Booking</li>
+        </ul>
+      </div>
+      <div class="add-card">
+        <h4><i class="fas fa-route"></i> Travel Logistics</h4>
+        <ul>
+          <li>Hotel Booking Assistance</li>
+          <li>Trip Scheduling & Travel Plans</li>
+          <li>Flight Booking Assistance</li>
+          <li>Mandatory Travel Insurance Arrangement</li>
+          <li>Foreign Exchange Guidance</li>
+          <li>Pre-Departure Orientation</li>
+        </ul>
+      </div>
+      <div class="add-card">
+        <h4><i class="fas fa-comments"></i> Correspondence & Coaching</h4>
+        <ul>
+          <li>Official Correspondence & Follow-ups</li>
+          <li>Visa Interview Preparation</li>
+          <li>Post-Decision Guidance</li>
+          <li>Appeals & Reapplication Consultation</li>
+          <li>Communication with Authorities</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-padding countries-section">
+  <div class="container">
+    <h2 style="color: white !important;">Countries We Secure Visas For</h2>
+    <p style="color: #cbd5e1;">Click a country to explore visa options.</p>
+
+    <div class="country-grid">
+      <a href="destinations.html#australia" class="country-card">
+        <img src="australia2.webp" alt="Australia">
+        <h4>Australia</h4>
+      </a>
+      <a href="destinations.html#canada" class="country-card">
+        <img src="canada2.webp" alt="Canada">
+        <h4>Canada</h4>
+      </a>
+      <a href="destinations.html#uk" class="country-card">
+        <img src="uk2.webp" alt="United Kingdom">
+        <h4>United Kingdom</h4>
+      </a>
+      <a href="destinations.html#usa" class="country-card">
+        <img src="usa2.webp" alt="USA">
+        <h4>USA</h4>
+      </a>
+
+      <a href="destinations.html#uae" class="country-card">
+        <img src="uae2.webp" alt="UAE">
+        <h4>UAE</h4>
+      </a>
+      <a href="destinations.html#singapore" class="country-card">
+        <img src="singapore2.webp" alt="Singapore">
+        <h4>Singapore</h4>
+      </a>
+      <a href="destinations.html#nz" class="country-card">
+        <img src="newzealand2.webp" alt="New Zealand">
+        <h4>New Zealand</h4>
+      </a>
+      <a href="destinations.html#schengen" class="country-card">
+        <img src="schengen2.webp" alt="Schengen">
+        <h4>Schengen</h4>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section-padding faq-section">
+  <div class="container faq-container">
+    <div class="text-center" style="margin-bottom: 40px;">
+      <h2>Common Questions Answered</h2>
+      <p class="section-subtitle">Clear answers to your visa concerns</p>
+    </div>
+
+    <details>
+      <summary>Do I need an IELTS score for a Student Visa?</summary>
+      <div class="faq-answer">
+        It depends on the country and university. Countries like Australia, Canada, and the UK generally require English proficiency. However, waivers are possible if your previous education was in English or if you are a citizen of an English-speaking country. We assess your history to see if an exemption applies.
+      </div>
+    </details>
+    <details>
+      <summary>Can I change my study course after my visa is granted?</summary>
+      <div class="faq-answer">
+        Yes, but with strict conditions. You must remain enrolled as a full-time student. Switching to a lower qualification level creates high risk. Always consult an expert before making changes to avoid visa cancellation.
+      </div>
+    </details>
+    <details>
+      <summary>How much money do I need to show for a Visitor Visa?</summary>
+      <div class="faq-answer">
+        There is no fixed global amount; it depends on your travel plan. You must cover return airfare, accommodation, and daily expenses. Stability is key—officers look for consistent income and savings history (3-6 months), not just a sudden large deposit.
+      </div>
+    </details>
+    <details>
+      <summary>Can I use funds sponsored by a family member?</summary>
+      <div class="faq-answer">
+        Yes. The sponsor must provide documented proof of relationship (birth/marriage certificates) and proof of financial capacity (funds in excess of the loan). A notarized Letter of Support is essential.
+      </div>
+    </details>
+    <details>
+      <summary>Does previous travel history help my application?</summary>
+      <div class="faq-answer">
+        Absolutely. A history of legal travel and timely return demonstrates genuine intent and reduces overstay risk. Even travel to visa-free countries helps build a profile of compliance.
+      </div>
+    </details>
+    <details>
+      <summary>If I have a refusal, can I reapply?</summary>
+      <div class="faq-answer">
+        Yes, but you must address the specific refusal reason (usually "weak ties"). We analyze your refusal letter and help you present significant changes in circumstances (new job, assets, etc.) to build a stronger case.
+      </div>
+    </details>
+    <details>
+      <summary>What are 'ties to home country'?</summary>
+      <div class="faq-answer">
+        Strong ties prove you will return home. They include stable employment, immediate family remaining in your home country, and property/asset ownership.
+      </div>
+    </details>
+    <details>
+      <summary>Can I travel while my visa is in process?</summary>
+      <div class="faq-answer">
+        Yes, but be ready to submit your passport at short notice. For UK/USA, the passport is often held during processing. For Canada/Australia, you keep it until the final decision request.
+      </div>
+    </details>
+    <details>
+      <summary>Can I work on a Visitor Visa?</summary>
+      <div class="faq-answer">
+        <strong>No, never.</strong> Working on a visitor visa is a serious violation that leads to immediate cancellation and bans. You are restricted to tourism and short business meetings only.
+      </div>
+    </details>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to streamline your visa process?</h2>
+    <p>Book a free consultation to discuss your specific needs.</p>
+    <a href="contact.html" class="btn-cta">Book a Free Consultation</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>SNS Visa Consultants</h4>
+        <p style="margin-bottom: 20px;">A subsidiary of SNS Global Holdings (PVT) Ltd.</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/SNSEducationConsultants/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/sns_visa_consultants/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/snsvisaconsultants" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Student Visas</a></li>
+          <li><a href="services.html">Visitor Visas</a></li>
+          <li><a href="services.html">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="about.html">Privacy Policy</a></li>
+          <li><a href="about.html">Terms & Conditions</a></li>
+          <li><a href="about.html">Legal Disclaimer</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <ul class="contact-info">
+          <li><i class="fas fa-envelope"></i> snsglobalholdings@gmail.com</li>
+          <li><i class="fas fa-phone"></i> +94 81 450 3235</li>
+          <li><i class="fas fa-mobile-alt"></i> +94 76 888 6509</li>
+          <li><i class="fas fa-mobile-alt"></i> +94 77 775 2878</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2025 SNS Global Holdings (PVT) Ltd. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.link/mt8cb4" class="whatsapp-btn" target="_blank" aria-label="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) { header.classList.add('scrolled'); }
+    else { header.classList.remove('scrolled'); }
+  });
+
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = themeToggle.querySelector('i');
+  const currentTheme = localStorage.getItem('theme');
+  const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    if (theme === 'dark') { themeIcon.classList.remove('fa-moon'); themeIcon.classList.add('fa-sun'); }
+    else { themeIcon.classList.remove('fa-sun'); themeIcon.classList.add('fa-moon'); }
+  }
+  if (currentTheme) { setTheme(currentTheme); } else if (prefersDarkScheme.matches) { setTheme('dark'); }
+  themeToggle.addEventListener('click', () => { let targetTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'; setTheme(targetTheme); });
+
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const navMenu = document.querySelector('.nav-menu');
+  const icon = menuBtn.querySelector('i');
+  menuBtn.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    if(navMenu.classList.contains('active')){
+      icon.classList.remove('fa-bars'); icon.classList.add('fa-times');
+      document.body.style.overflow = 'hidden';
+    } else {
+      icon.classList.remove('fa-times'); icon.classList.add('fa-bars');
+      document.body.style.overflow = 'auto';
+    }
+  });
+  document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('active'); icon.classList.remove('fa-times'); icon.classList.add('fa-bars');
+      document.body.style.overflow = 'auto';
+    });
+  });
+</script>
+</body>
+</html>
